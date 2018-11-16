@@ -26,6 +26,7 @@ module EndiciaLabelServer
     REQUEST_RATES_ENDPOINT = 'CalculatePostageRatesXML'
     GET_USER_SIGNUP_ENDPOINT = 'GetUserSignUpXML'
     CHANGE_PASS_PHRASE_ENDPOINT = 'ChangePassPhraseXML'
+    GET_ACCOUNT_STATUS_ENDPOINT = 'GetAccountStatusXML'
 
     DEFAULT_PARAMS = {
       test_mode: false
@@ -68,6 +69,11 @@ module EndiciaLabelServer
     def change_pass_phrase(builder = nil, &block)
       builder_proxy(builder, CHANGE_PASS_PHRASE_ENDPOINT, ChangePassPhraseBuilder,
                     ChangePassPhraseParser, block)
+    end
+
+    def get_account_status(builder = nil, &block)
+      builder_proxy(builder, GET_ACCOUNT_STATUS_ENDPOINT, GetAccountStatusBuilder,
+                    GetAccountStatusParser, block)
     end
 
     private
