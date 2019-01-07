@@ -1,8 +1,10 @@
 module EndiciaLabelServer
   module Util
     class << self
-      def camelize(value)
-        value.to_s.split('_').map { |v| capitalize_with_id_exception(v) }.join
+      def camelize(value, ignore_exception = false)
+        value.to_s.split('_').map do |v|
+          ignore_exception ? v.capitalize : capitalize_with_id_exception(v)
+        end.join
       end
 
       def capitalize_with_id_exception(value)

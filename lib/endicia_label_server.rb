@@ -21,6 +21,7 @@ module EndiciaLabelServer
     autoload :PostageLabelBuilder,     "#{GEM_NAME}/builders/postage_label_builder"
     autoload :ChangePassPhraseBuilder, "#{GEM_NAME}/builders/change_pass_phrase_builder"
     autoload :GetAccountStatusBuilder, "#{GEM_NAME}/builders/get_account_status_builder"
+    autoload :RefundBuilder,           "#{GEM_NAME}/builders/refund_builder"
   end
 
   module Parsers
@@ -31,5 +32,6 @@ module EndiciaLabelServer
     autoload :PostageLabelParser,      "#{GEM_NAME}/parsers/postage_label_parser"
     autoload :ChangePassPhraseParser,  "#{GEM_NAME}/parsers/change_pass_phrase_parser"
     autoload :GetAccountStatusParser,  "#{GEM_NAME}/parsers/get_account_status_parser"
+    autoload :RefundParser,            "#{GEM_NAME}/parsers/refund_parser"
   end
 end

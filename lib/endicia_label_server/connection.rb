@@ -27,6 +27,7 @@ module EndiciaLabelServer
     GET_USER_SIGNUP_ENDPOINT = 'GetUserSignUpXML'
     CHANGE_PASS_PHRASE_ENDPOINT = 'ChangePassPhraseXML'
     GET_ACCOUNT_STATUS_ENDPOINT = 'GetAccountStatusXML'
+    GET_REFUND_ENDPOINT = 'GetRefundXML'
 
     DEFAULT_PARAMS = {
       test_mode: false
@@ -76,6 +77,11 @@ module EndiciaLabelServer
                     GetAccountStatusParser, block)
     end
 
+    def get_refund(builder = nil, &block)
+      builder_proxy(builder, GET_REFUND_ENDPOINT, RefundBuilder,
+                    RefundParser, block)
+    end
+
     private
 
     def build_url(endpoint)
@@ -94,6 +100,7 @@ module EndiciaLabelServer
       end
 
       response = get_response_stream path, builder.to_http_post
+
       parser.new.tap do |p|
         Ox.sax_parse(p, response)
       end
