@@ -24,6 +24,7 @@ module EndiciaLabelServer
     GET_POSTAGE_LABEL_ENDPOINT = 'GetPostageLabelXML'
     REQUEST_RATE_ENDPOINT = 'CalculatePostageRateXML'
     REQUEST_RATES_ENDPOINT = 'CalculatePostageRatesXML'
+    BUY_POSTAGE_ENDPOINT = 'BuyPostageXML'
     GET_USER_SIGNUP_ENDPOINT = 'GetUserSignUpXML'
     CHANGE_PASS_PHRASE_ENDPOINT = 'ChangePassPhraseXML'
     GET_ACCOUNT_STATUS_ENDPOINT = 'GetAccountStatusXML'
@@ -55,6 +56,11 @@ module EndiciaLabelServer
     def rates(builder = nil, &block)
       builder_proxy(builder, REQUEST_RATES_ENDPOINT, PostageRatesBuilder,
                     PostageRatesParser, block)
+    end
+
+    def buy_postage(builder = nil, &block)
+      builder_proxy(builder, BUY_POSTAGE_ENDPOINT, BuyPostageBuilder,
+                    BuyPostageParser, block)
     end
 
     def get_label(builder = nil, &block)
